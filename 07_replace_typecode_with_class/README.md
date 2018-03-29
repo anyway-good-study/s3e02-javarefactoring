@@ -1,0 +1,31 @@
+# 분류 코드를 클래스로 치환
+
+### 요약
+- 리팩토링의 대상은 객체를 `int` 값으로 분류하는 경우이다.
+  - 개인적으로 이렇게 사용하는 사람을 본 기억은 없다.
+  - 결론은 `enum` 을 잘 활용하면 된다.
+- `책=0`, `DVD=1`, `소프트웨어=3` 과 같이 지정하면 아래와 같은 문제가 발생한다.
+  - 0~2 에서 벗어난 범위의 값을 사용할 수도 있음
+  - 가독성이 떨어져서 실수할 수 있음
+- 1단계 리팩토링
+  - typecode를 멤버변수로 상수를 각각 정의한다.
+  - 여전히 `int` data type을 사용하기 때문에 이상한 값으로 비교해도 컴파일 단계에서는 발견할 수 없다.
+    - `new Item(Item.TYPECODE_ARMOR) vs new Item(32167)`
+  - 다른 type code와 혼동할 수 있다.
+    - `new Item(Item.TYPECODE_SWORD) vs new Item(NPC.shopkeeper)`
+- 2단계 리팩토링
+  - typecode를 클리수로 정의한다.
+  - 컴파일 시간에 클래스를 비교할 수 있으며, 정의되지 않은 값일 경우 `null` 처리 가능하다.
+- 3단계 리팩토링
+  - 열거형 type `enum` 을 사용한다.
+- 언어별 `enum`
+  - C/C++ : `enum Foo { a, b, c = 10, d, e = 1, f, g = f + c };`
+    - a = 0, b = 1, c = 10, d = 11, e = 1, f = 2, g = 12
+    - `enum direction { left = 'l', right = 'r' };`
+  - C# : `enum Month : byte { Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec };`
+  - Java : `public enum Suit { CLUBS, DIAMONDS, HEARTS, SPADES }`
+    - 함수처럼 사용할 수도 있다. [Java Enum Docs](https://docs.oracle.com/javase/1.5.0/docs/guide/language/enums.html) 참고
+  - Python : enum 에 정의된 Enum 클래스 사용 (from enum import Enum)
+    - [Python Enum Docs](https://docs.python.org/3/library/enum.html) 참고
+  - MySQL : enum 이라는 data type을 제공
+    - [MySQL Enum Docs](https://dev.mysql.com/doc/refman/5.7/en/enum.html) 참고
