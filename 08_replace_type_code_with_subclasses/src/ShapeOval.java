@@ -1,5 +1,5 @@
 public class ShapeOval extends Shape {
-    public ShapeOval(int typeCode, int startX, int startY, int endX, int endY) {
+    public ShapeOval(int startX, int startY, int endX, int endY) {
         super(startX, startY, endX, endY);
     }
 

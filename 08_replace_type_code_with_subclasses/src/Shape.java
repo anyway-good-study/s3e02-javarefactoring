@@ -26,16 +26,7 @@ public abstract class Shape {
         return "[" + getName() + ", " + "("+ startX + ", " + startY + ")-" + "("+ endX + ", " + endY + ")]";
     }
 
-    public static Shape createShape(int typeCode, int startX, int startY, int endX, int endY) {
-        switch(typeCode) {
-            case TYPECODE_LINE:
-                return new ShapeLine(typeCode, startX, startY, endX, endY);
-            case TYPECODE_RECTANGLE:
-                return new ShapeRectangle(typeCode, startX, startY, endX, endY);
-            case TYPECODE_OVAL:
-                return new ShapeOval(typeCode, startX, startY, endX, endY);
-            default:
-                throw new IllegalArgumentException("typecode = " + typeCode);
-        }
+    public static Shape createShape(ShapeFactory factory, int startX, int startY, int endX, int endY) {
+        return factory.create(startX, startY, endX, endY);
     }
 }

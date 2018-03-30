@@ -1,5 +1,5 @@
 public class ShapeLine extends Shape {
-    public ShapeLine(int typeCode, int startX, int startY, int endX, int endY) {
+    public ShapeLine(int startX, int startY, int endX, int endY) {
         super(startX, startY, endX, endY);
     }
 

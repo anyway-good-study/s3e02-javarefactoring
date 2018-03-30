@@ -1,5 +1,5 @@
 public class ShapeRectangle extends Shape {
-    public ShapeRectangle(int typeCode, int startX, int startY, int endX, int endY) {
+    public ShapeRectangle(int startX, int startY, int endX, int endY) {
         super(startX, startY, endX, endY);
     }
 
