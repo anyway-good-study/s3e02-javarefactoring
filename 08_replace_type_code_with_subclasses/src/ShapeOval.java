@@ -1,11 +1,16 @@
 public class ShapeOval extends Shape {
     public ShapeOval(int typeCode, int startX, int startY, int endX, int endY) {
-        super(typeCode, startX, startY, endX, endY);
+        super(startX, startY, endX, endY);
     }
 
     @Override
     public int getTypeCode() {
         return Shape.TYPECODE_OVAL;
+    }
+
+    @Override
+    public String getName() {
+        return "OVAL";
     }
 
     @Override
