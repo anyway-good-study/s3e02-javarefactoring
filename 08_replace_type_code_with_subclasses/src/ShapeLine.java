@@ -1,11 +1,11 @@
-public class ShapeLine extends Shape {
+public class ShapeLine extends AbstractShape {
     public ShapeLine(int startX, int startY, int endX, int endY) {
         super(startX, startY, endX, endY);
     }
 
     @Override
     public int getTypeCode() {
-        return Shape.TYPECODE_LINE;
+        return AbstractShape.TYPECODE_LINE;
     }
 
     @Override

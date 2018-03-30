@@ -1,11 +1,11 @@
-public class ShapeRectangle extends Shape {
+public class ShapeRectangle extends AbstractShape {
     public ShapeRectangle(int startX, int startY, int endX, int endY) {
         super(startX, startY, endX, endY);
     }
 
     @Override
     public int getTypeCode() {
-        return Shape.TYPECODE_RECTANGLE;
+        return AbstractShape.TYPECODE_RECTANGLE;
     }
 
     @Override

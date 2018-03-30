@@ -1,5 +1,5 @@
 public abstract class ShapeFactory {
-    public abstract Shape create(int startX, int startY, int endX, int endY);
+    public abstract AbstractShape create(int startX, int startY, int endX, int endY);
 
     public static class LineFactory extends ShapeFactory {
         private static final ShapeFactory factory = new LineFactory();
@@ -9,7 +9,7 @@ public abstract class ShapeFactory {
         }
 
         @Override
-        public Shape create(int startX, int startY, int endX, int endY) {
+        public AbstractShape create(int startX, int startY, int endX, int endY) {
             return new ShapeLine(startX, startY, endX, endY);
         }
     }
@@ -22,7 +22,7 @@ public abstract class ShapeFactory {
         }
 
         @Override
-        public Shape create(int startX, int startY, int endX, int endY) {
+        public AbstractShape create(int startX, int startY, int endX, int endY) {
             return new ShapeRectangle(startX, startY, endX, endY);
         }
     }
@@ -35,7 +35,7 @@ public abstract class ShapeFactory {
         }
 
         @Override
-        public Shape create(int startX, int startY, int endX, int endY) {
+        public AbstractShape create(int startX, int startY, int endX, int endY) {
             return new ShapeOval(startX, startY, endX, endY);
         }
     }

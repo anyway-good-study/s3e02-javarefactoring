@@ -1,11 +1,11 @@
-public class ShapeOval extends Shape {
+public class ShapeOval extends AbstractShape {
     public ShapeOval(int startX, int startY, int endX, int endY) {
         super(startX, startY, endX, endY);
     }
 
     @Override
     public int getTypeCode() {
-        return Shape.TYPECODE_OVAL;
+        return AbstractShape.TYPECODE_OVAL;
     }
 
     @Override

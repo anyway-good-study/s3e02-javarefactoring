@@ -1,14 +1,14 @@
 public class Main {
     public static void main(String[] arg) {
-        Shape line = Shape.createShape(ShapeFactory.LineFactory.getInstance(), 0, 0, 100, 200);
-        Shape rect = Shape.createShape(ShapeFactory.RectangleFactory.getInstance(), 10, 20, 30, 40);
-        Shape oval = Shape.createShape(ShapeFactory.OvalFactory.getInstance(), 100, 200, 300, 400);
+        AbstractShape line = AbstractShape.createShape(ShapeFactory.LineFactory.getInstance(), 0, 0, 100, 200);
+        AbstractShape rect = AbstractShape.createShape(ShapeFactory.RectangleFactory.getInstance(), 10, 20, 30, 40);
+        AbstractShape oval = AbstractShape.createShape(ShapeFactory.OvalFactory.getInstance(), 100, 200, 300, 400);
 
-        Shape[] shape = {
+        AbstractShape[] shape = {
             line, rect, oval
         };
 
-        for (Shape s: shape) {
+        for (AbstractShape s: shape) {
             s.draw();
         }
     }
