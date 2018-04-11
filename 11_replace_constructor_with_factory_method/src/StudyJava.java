@@ -10,7 +10,11 @@ class Shape {
     private final int ex;
     private final int ey;
 
-    public Shape(int typecode, int sx, int sy, int ex, int ey) {
+    public static Shape create(int typecode, int startx, int starty, int endx, int endy) {
+        return new Shape(typecode, startx, starty, endx, endy);
+    }
+
+    private Shape(int typecode, int sx, int sy, int ex, int ey) {
         this.typecode = typecode;
         this.sx = sy;
         this.sy = sy;
@@ -73,9 +77,9 @@ class Shape {
 
 public class StudyJava {
     public static void main(String[] args) {
-        Shape line = new Shape(Shape.TYPECODE_LINE, 0,0, 10, 10);
-        Shape rectangle = new Shape(Shape.TYPECODE_RECTANGLE, 10,20,30,40);
-        Shape oval = new Shape(Shape.TYPECODE_OVAL, 100,200,300,400);
+        Shape line = Shape.create(Shape.TYPECODE_LINE, 0,0, 10, 10);
+        Shape rectangle = Shape.create(Shape.TYPECODE_RECTANGLE, 10,20,30,40);
+        Shape oval = Shape.create(Shape.TYPECODE_OVAL, 100,200,300,400);
 
         Shape[] shape = {
                 line,
