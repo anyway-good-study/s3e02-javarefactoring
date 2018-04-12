@@ -48,6 +48,9 @@ public class IntegerDisplay extends Frame implements ActionListener {
 
     }
 
+    public void valueChanged(ValueChangeEvent e) {
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == incrementButton) {
