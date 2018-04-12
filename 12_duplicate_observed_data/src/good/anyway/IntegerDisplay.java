@@ -10,7 +10,7 @@ public class IntegerDisplay extends Frame implements ActionListener {
     private final Button incrementButton = new Button("+");
     private final Button decrementButton = new Button("-");
 
-    private int value = 0;
+    private Value value = new Value(0);
 
     public IntegerDisplay() {
         super("IntegerDisplay");
@@ -41,19 +41,19 @@ public class IntegerDisplay extends Frame implements ActionListener {
     }
 
     public void setValue(int value) {
-        this.value = value;
-        this.octalLabel.setText(Integer.toString(this.value, 8));
-        this.decimalLabel.setText(Integer.toString(this.value, 10));
-        this.hexadecimalLebel.setText(Integer.toString(this.value, 16));
+        this.value.setValue(value);
+        this.octalLabel.setText(Integer.toString(this.value.getValue(), 8));
+        this.decimalLabel.setText(Integer.toString(this.value.getValue(), 10));
+        this.hexadecimalLebel.setText(Integer.toString(this.value.getValue(), 16));
 
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == incrementButton) {
-            setValue(this.value + 1);
+            setValue(this.value.getValue() + 1);
         } else if (e.getSource() == decrementButton) {
-            setValue(this.value -1);
+            setValue(this.value.getValue() -1);
         }
     }
 }
