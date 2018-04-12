@@ -10,24 +10,35 @@ public class IntegerDisplay extends Frame implements ActionListener, ValueListen
     private final Button incrementButton = new Button("+");
     private final Button decrementButton = new Button("-");
 
+    private final Graph graphCircle = Graph.createGraph(Graph.CIRCLE, 100, 100);
+    private final Graph graphRectangle = Graph.createGraph(Graph.RECTANGLE, 100, 50);
+
     private Value value = new Value(0);
 
     public IntegerDisplay() {
         super("IntegerDisplay");
 
-        setLayout(new GridLayout(4, 2));
-        add(new Label("Octal:"));
-        add(octalLabel);
-        add(new Label("Decimal:"));
-        add(decimalLabel);
-        add(new Label("Hexadecimal:"));
-        add(hexadecimalLebel);
-        add(incrementButton);
-        add(decrementButton);
+        Panel panel = new Panel(new GridLayout(4, 2));
+        panel.add(new Label("Octal:"));
+        panel.add(octalLabel);
+        panel.add(new Label("Decimal:"));
+        panel.add(decimalLabel);
+        panel.add(new Label("Hexadecimal:"));
+        panel.add(hexadecimalLebel);
+        panel.add(incrementButton);
+        panel.add(decrementButton);
+
+        add(panel, BorderLayout.NORTH);
+        add(graphCircle, BorderLayout.CENTER);
+        add(graphRectangle, BorderLayout.SOUTH);
 
         incrementButton.addActionListener(this);
         decrementButton.addActionListener(this);
+
         this.value.addValueListener(this);
+
+        value.addValueListener(graphCircle);
+        value.addValueListener(graphRectangle);
 
         addWindowListener(new WindowAdapter() {
             @Override
