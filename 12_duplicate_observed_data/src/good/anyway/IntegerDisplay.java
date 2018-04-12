@@ -3,7 +3,7 @@ package good.anyway;
 import java.awt.*;
 import java.awt.event.*;
 
-public class IntegerDisplay extends Frame implements ActionListener {
+public class IntegerDisplay extends Frame implements ActionListener, ValueListener {
     private final Label octalLabel = new Label("0");
     private final Label decimalLabel = new Label("0");
     private final Label hexadecimalLebel = new Label("0");
@@ -27,6 +27,7 @@ public class IntegerDisplay extends Frame implements ActionListener {
 
         incrementButton.addActionListener(this);
         decrementButton.addActionListener(this);
+        this.value.addValueListener(this);
 
         addWindowListener(new WindowAdapter() {
             @Override
@@ -42,13 +43,14 @@ public class IntegerDisplay extends Frame implements ActionListener {
 
     public void setValue(int value) {
         this.value.setValue(value);
-        this.octalLabel.setText(Integer.toString(this.value.getValue(), 8));
-        this.decimalLabel.setText(Integer.toString(this.value.getValue(), 10));
-        this.hexadecimalLebel.setText(Integer.toString(this.value.getValue(), 16));
-
     }
 
     public void valueChanged(ValueChangeEvent e) {
+        if (e.getSource() == value) {
+            this.octalLabel.setText(Integer.toString(this.value.getValue(), 8));
+            this.decimalLabel.setText(Integer.toString(this.value.getValue(), 10));
+            this.hexadecimalLebel.setText(Integer.toString(this.value.getValue(), 16));
+        }
     }
 
     @Override
