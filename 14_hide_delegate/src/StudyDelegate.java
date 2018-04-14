@@ -10,12 +10,20 @@ class AddressFile {
         this.database = new Database(filename);
     }
 
-    public Database getDatabase() {
-        return this.database;
-    }
-
     public Enumeration names() {
         return this.database.getProperties().propertyNames();
+    }
+
+    public void set(String key, String value) {
+        this.database.set(key, value);
+    }
+
+    public String get(String key) {
+        return this.database.get(key);
+    }
+
+    public void update() throws IOException {
+        this.database.update();
     }
 }
 
@@ -53,16 +61,16 @@ public class StudyDelegate {
     public static void main(String[] args) {
         try {
             AddressFile file = new AddressFile("address.txt");
-            file.getDatabase().set("Jang Youngwhan", "nathaniel@anyway.com");
-            file.getDatabase().set("Lee Kihyun", "varian@anyway.com");
-            file.getDatabase().set("Park Sanguk", "murray@anyway.com");
-            file.getDatabase().set("Hwang Yeonju", "joanne@anyway.com");
-            file.getDatabase().update();
+            file.set("Jang Youngwhan", "nathaniel@anyway.com");
+            file.set("Lee Kihyun", "varian@anyway.com");
+            file.set("Park Sanguk", "murray@anyway.com");
+            file.set("Hwang Yeonju", "joanne@anyway.com");
+            file.update();
 
             Enumeration e = file.names();
             while (e.hasMoreElements()) {
                 String name = (String)e.nextElement();
-                String mail = file.getDatabase().get(name);
+                String mail = file.get(name);
                 System.out.println("name=" + name + ", mail=" + mail);
             }
         } catch (IOException e) {
