@@ -2,8 +2,8 @@ package anyway.good;
 
 import java.io.IOException;
 
-public class CSVStringTablePrinter extends CSVPrinter {
-    public CSVStringTablePrinter(String string) {
+public class CSVTablePrinter extends CSVPrinter {
+    public CSVTablePrinter(String string) {
         super(new CSVStringReader(string));
     }
 

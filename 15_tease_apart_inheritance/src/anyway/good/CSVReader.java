@@ -6,7 +6,20 @@ import java.util.regex.Pattern;
 
 public abstract class CSVReader {
     protected static final Pattern CSV_PATTERN = Pattern.compile("\\s*,\\s*");
+    private final BufferedReader bufferedReader;
 
-    public abstract String[] readCSV() throws IOException;
-    public abstract void close() throws IOException;
+    protected CSVReader(BufferedReader bufferedReader) {
+        this.bufferedReader = bufferedReader;
+    }
+    public String[] readCSV() throws IOException {
+        String line = bufferedReader.readLine();
+        if (line == null)
+            return null;
+
+        String[] items = CSV_PATTERN.split(line);
+        return items;
+    }
+    public void close() throws IOException {
+        bufferedReader.close();
+    }
 }
