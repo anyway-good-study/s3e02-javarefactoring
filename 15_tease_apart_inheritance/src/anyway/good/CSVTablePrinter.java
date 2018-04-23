@@ -7,7 +7,6 @@ public class CSVTablePrinter extends CSVPrinter {
         super(csvReader);
     }
 
-    @Override
     public String[] readCSV() throws IOException {
         return csvReader.readCSV();
     }

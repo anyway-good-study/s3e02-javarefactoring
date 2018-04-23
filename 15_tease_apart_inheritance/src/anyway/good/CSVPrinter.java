@@ -7,6 +7,5 @@ public abstract class CSVPrinter {
     protected CSVPrinter(CSVReader csvReader) {
         this.csvReader = csvReader;
     }
-    public abstract String[] readCSV() throws IOException;
     public abstract void print() throws IOException;
 }
