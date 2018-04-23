@@ -3,8 +3,8 @@ package anyway.good;
 import java.io.IOException;
 
 public class CSVTablePrinter extends CSVPrinter {
-    public CSVTablePrinter(String string) {
-        super(new CSVStringReader(string));
+    public CSVTablePrinter(CSVReader csvReader) {
+        super(csvReader);
     }
 
     @Override
