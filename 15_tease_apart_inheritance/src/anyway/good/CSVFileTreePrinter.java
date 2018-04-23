@@ -2,9 +2,14 @@ package anyway.good;
 
 import java.io.IOException;
 
-public class CSVFileTreePrinter extends CSVFileReader {
+public class CSVFileTreePrinter extends CSVPrinter {
     public CSVFileTreePrinter(String filename) throws IOException {
-        super(filename);
+        super(new CSVFileReader(filename));
+    }
+
+    @Override
+    public String[] readCSV() throws IOException {
+        return csvReader.readCSV();
     }
 
     public void print() throws IOException {
